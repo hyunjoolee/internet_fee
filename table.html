@@ -6,7 +6,7 @@
 
 <style>
 /*
-  table {
+table {
     width: 100%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
@@ -16,13 +16,18 @@
     padding: 10px;
     text-align: center;
   }
-  th {
+  thead tr {
+    background-color: #0d47a1;
+    color: #ffffff;
+  }
+  tbody tr:nth-child(2n) {
     background-color: #bbdefb;
   }
-  td {
+  tbody tr:nth-child(2n+1) {
     background-color: #e3f2fd;
   }
 */
+
 /* 테이블 스타일 */
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -120,7 +125,7 @@ function select_changed() {
 	];
 	var array4 = [ 5000, 9000, 10000, 12000 ]; // 추가결합할인
 	
-	var array5 = [ // 전화 요금 테이블 [고급형C, 일반형]
+	var array5 = [ // 전화 요금 테이블 [일반형, 고급형C]
 		[ 2000, 5000 ], // 무약정
 		[ 2000, 5000 ], // 1년
 		[ 2000, 5000 ], // 2년
@@ -128,7 +133,7 @@ function select_changed() {
 		[ 2000, 5000 ], // 결합
 	];
 	
-	var array6 = [ // 전화 할인금액 테이블 [고급형C, 일반형]
+	var array6 = [ // 전화 할인금액 테이블 [일반형, 고급형C]
 		[ 1000, 0    ], // 무약정
 		[ 1000, 1000 ], // 1년
 		[ 1000, 1500 ], // 2년
@@ -208,6 +213,25 @@ function select_changed() {
 	document.getElementById('c_four').innerHTML  = cfour;
 	document.getElementById('c_five').innerHTML  = cfive;
 	
+	var monthtable = [0, 12, 24, 36, 36];
+	var done   = atwo * monthtable[v.contract];
+	var dtwo   = athree * monthtable[v.contract];
+	var dthree = afour * monthtable[v.contract];
+	var dfour  = afive * monthtable[v.contract];
+	document.getElementById('d_one').innerHTML   = done;
+	document.getElementById('d_two').innerHTML   = dtwo;
+	document.getElementById('d_three').innerHTML = dthree;
+	document.getElementById('d_four').innerHTML  = dfour;
+	
+	var eone   = bthree * monthtable[v.contract];
+	var etwo   = ctwo * monthtable[v.contract];
+	var ethree = cthree * monthtable[v.contract];
+	document.getElementById('e_one').innerHTML   = eone;
+	document.getElementById('e_two').innerHTML   = etwo;
+	document.getElementById('e_three').innerHTML = ethree;	
+	
+	var fone   = aone + atwo + athree + afour + btwo + ctwo + cthree;
+	document.getElementById('f_one').innerHTML   = fone;
 	
 	document.getElementById('g_one').innerHTML   = aone + bone + cone;
 	document.getElementById('g_two').innerHTML   = atwo + athree + afour + afive + btwo + ctwo + cthree;
@@ -455,7 +479,7 @@ function select_changed() {
     <td class="tg-0lax" style="text-align:center;width:150px;">총할인</td>
   </tr>
   <tr>
-    <td class="tg-0lax"><span id="f_fee"></span></td>
+    <td class="tg-0lax"><span id="f_one"></span></td>
   </tr>
 </table>
 <h3>■ 최종</h3>
