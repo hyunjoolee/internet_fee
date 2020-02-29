@@ -100,7 +100,7 @@ function get_values() {
 
 //numberWithCommas, 세자리마다 콤마찍기
 function comma(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 // 선택값 변경될 때마다 호출
@@ -202,45 +202,45 @@ function select_changed() {
 	var btwo   = (array6[v.contract][v.fee1] * v.phonenum1) + (array6[v.contract][v.fee2] * v.phonenum2)
 	var bthree = (array10[v.contract][v.fee1] * v.phonenum1)+ (array10[v.contract][v.fee2] * v.phonenum2)
 	var bfour  = bone - btwo + bthree
-	document.getElementById('b_one').innerHTML   = bone;
-	document.getElementById('b_two').innerHTML   = btwo;
-	document.getElementById('b_three').innerHTML = bthree;
-	document.getElementById('b_four').innerHTML  = bfour;
+	document.getElementById('b_one').innerHTML   = comma(bone);
+	document.getElementById('b_two').innerHTML   = comma(btwo);
+	document.getElementById('b_three').innerHTML = comma(bthree);
+	document.getElementById('b_four').innerHTML  = comma(bfour);
 	
 	var cone   = array7[v.contract][v.tv] * v.numtv
 	var ctwo   = array8[v.contract][v.tv] * v.numtv
 	var cthree = parseInt((cone - ctwo) * 0.07);
 	var cfour  = v.numtv * 4000;
 	var cfive  = cone - ctwo - cthree + cfour;
-	document.getElementById('c_one').innerHTML   = cone;
-	document.getElementById('c_two').innerHTML   = ctwo;
-	document.getElementById('c_three').innerHTML = cthree;
-	document.getElementById('c_four').innerHTML  = cfour;
-	document.getElementById('c_five').innerHTML  = cfive;
+	document.getElementById('c_one').innerHTML   = comma(cone);
+	document.getElementById('c_two').innerHTML   = comma(ctwo);
+	document.getElementById('c_three').innerHTML = comma(cthree);
+	document.getElementById('c_four').innerHTML  = comma(cfour);
+	document.getElementById('c_five').innerHTML  = comma(cfive);
 	
 	var monthtable = [0, 12, 24, 36, 36];
 	var done   = atwo * monthtable[v.contract];
 	var dtwo   = athree * monthtable[v.contract];
 	var dthree = afour * monthtable[v.contract];
 	var dfour  = afive * monthtable[v.contract];
-	document.getElementById('d_one').innerHTML   = done;
-	document.getElementById('d_two').innerHTML   = dtwo;
-	document.getElementById('d_three').innerHTML = dthree;
-	document.getElementById('d_four').innerHTML  = dfour;
+	document.getElementById('d_one').innerHTML   = comma(done);
+	document.getElementById('d_two').innerHTML   = comma(dtwo);
+	document.getElementById('d_three').innerHTML = comma(dthree);
+	document.getElementById('d_four').innerHTML  = comma(dfour);
 	
 	var eone   = bthree * monthtable[v.contract];
 	var etwo   = ctwo * monthtable[v.contract];
 	var ethree = cthree * monthtable[v.contract];
-	document.getElementById('e_one').innerHTML   = eone;
-	document.getElementById('e_two').innerHTML   = etwo;
-	document.getElementById('e_three').innerHTML = ethree;	
+	document.getElementById('e_one').innerHTML   = comma(eone);
+	document.getElementById('e_two').innerHTML   = comma(etwo);
+	document.getElementById('e_three').innerHTML = comma(ethree);	
 	
 	var fone   = aone + atwo + athree + afour + btwo + ctwo + cthree;
-	document.getElementById('f_one').innerHTML   = fone;
+	document.getElementById('f_one').innerHTML   = comma(fone);
 	
-	document.getElementById('g_one').innerHTML   = aone + bone + cone;
-	document.getElementById('g_two').innerHTML   = atwo + athree + afour + afive + btwo + ctwo + cthree;
-	document.getElementById('g_three').innerHTML = asix + bfour + cfive;
+	document.getElementById('g_one').innerHTML   = comma(aone + bone + cone);
+	document.getElementById('g_two').innerHTML   = comma(atwo + athree + afour + afive + btwo + ctwo + cthree);
+	document.getElementById('g_three').innerHTML = comma(asix + bfour + cfive);
 }
 /*
  var internet_speed_changed = function (select_obj){
