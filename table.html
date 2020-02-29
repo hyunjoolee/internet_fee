@@ -98,6 +98,11 @@ function get_values() {
 	return ret;
 }
 
+//numberWithCommas, 세자리마다 콤마찍기
+function comma(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // 선택값 변경될 때마다 호출
 function select_changed() {
 	var v = get_values()
@@ -186,12 +191,12 @@ function select_changed() {
 	var afour  = array4[v.addition];
 	var afive  = parseInt((aone - atwo - athree - afour) * 0.07);
 	var asix   = aone - atwo - athree - afour - afive
-	document.getElementById('a_one').innerHTML   = aone;
-	document.getElementById('a_two').innerHTML   = atwo;
-	document.getElementById('a_three').innerHTML = athree;
-	document.getElementById('a_four').innerHTML  = afour;
-	document.getElementById('a_five').innerHTML  = afive;
-	document.getElementById('a_six').innerHTML   = asix;
+	document.getElementById('a_one').innerHTML   = comma(aone);
+	document.getElementById('a_two').innerHTML   = comma(atwo);
+	document.getElementById('a_three').innerHTML = comma(athree);
+	document.getElementById('a_four').innerHTML  = comma(afour);
+	document.getElementById('a_five').innerHTML  = comma(afive);
+	document.getElementById('a_six').innerHTML   = comma(asix);
 	
 	var bone   = (array5[v.contract][v.fee1] * v.phonenum1) + (array5[v.contract][v.fee2] * v.phonenum2)
 	var btwo   = (array6[v.contract][v.fee1] * v.phonenum1) + (array6[v.contract][v.fee2] * v.phonenum2)
